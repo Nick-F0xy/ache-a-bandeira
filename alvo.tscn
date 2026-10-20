@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://c2a6j21ll4q3k"]
+
+[ext_resource type="Script" uid="uid://cyj4xaeiny30v" path="res://alvo.gd" id="1_q2vq5"]
+[ext_resource type="Texture2D" uid="uid://caoaxijmskjix" path="res://arte/kenney_tiny-dungeon/Tilemap/tilemap_packed.png" id="2_npyt8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8cu02"]
+atlas = ExtResource("2_npyt8")
+region = Rect2(32, 160, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_q2vq5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8cu02")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_npyt8"]
+size = Vector2(32, 32)
+
+[node name="Alvo" type="Area2D" unique_id=159988642]
+script = ExtResource("1_q2vq5")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=317500160]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_q2vq5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=197224334]
+shape = SubResource("RectangleShape2D_npyt8")
+
+[node name="Label" type="Label" parent="." unique_id=1428234354]
+visible = false
+offset_right = 40.0
+offset_bottom = 23.0
+text = "AHHHHHH!!!
+
+"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
